@@ -1,0 +1,24 @@
+{
+  "name": "autobfuscator",
+  "version": "1.0.0",
+  "description": "Obfuscator all js files automatic",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "./node_modules/.bin/nodemon",
+    "start": "./node_modules/.bin/ts-node ./src/index.ts"
+  },
+  "keywords": [
+    "node",
+    "typescript"
+  ],
+  "author": "alqubo",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "latest",
+    "nodemon": "latest",
+    "ts-node": "latest",
+    "typescript": "latest",
+    "@types/javascript-obfuscator": "^0.17.0",
+    "javascript-obfuscator": "^1.2.2"
+  }
+}
