@@ -20,5 +20,8 @@
     "typescript": "latest",
     "@types/javascript-obfuscator": "^0.17.0",
     "javascript-obfuscator": "^1.2.2"
+  },
+  "dependencies": {
+    "recursive-readdir": "^2.2.2"
   }
 }
