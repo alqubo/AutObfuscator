@@ -26,9 +26,10 @@ export class Obfuscator {
 
             const minFile = new RegExp(/.min.js/).exec(file)?.index;
             const mapFile = new RegExp(/.js.map/).exec(file)?.index;
+            const jsonFile = new RegExp(/.json/).exec(file)?.index;
             const jsFile = new RegExp(/.js/).exec(file)?.index;
 
-            if(minFile || mapFile) return true;
+            if(minFile || mapFile || jsonFile) return true;
 
             return !jsFile;
         }
