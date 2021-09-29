@@ -26,9 +26,10 @@ export class Obfuscator {
 
             const minFile = new RegExp(/.min.js/).exec(file)?.index;
             const mapFile = new RegExp(/.js.map/).exec(file)?.index;
+            const jsonFile = new RegExp(/.json/).exec(file)?.index;
             const jsFile = new RegExp(/.js/).exec(file)?.index;
 
-            if(minFile || mapFile) return true;
+            if(minFile || mapFile || jsonFile) return true;
 
             return !jsFile;
         }
@@ -43,7 +44,9 @@ export class Obfuscator {
         files.forEach((file) => {
             const code = this.loadFile(file);
             const obfuscatedCode = this.obfuscateCode(code);
-            this.saveCode(file, obfuscatedCode);
+            if(obfuscatedCode != false){
+                this.saveCode(file, obfuscatedCode);
+            }
         });
     }
 
@@ -56,8 +59,14 @@ export class Obfuscator {
             compact: true,
             controlFlowFlattening: true
         };
-        const result = ObfuscatorJS.obfuscate(code, options);
-        return result.getObfuscatedCode();
+        try {
+            const result = ObfuscatorJS.obfuscate(code, options);
+            return result.getObfuscatedCode();
+        } catch(e) {
+            console.log(e);
+        }
+        
+        return false;
     }
 
     saveCode = (route: string, code: string) => {
